@@ -1,0 +1,32 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="PersistenciaExamenPractico"
+                      transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!-- Listado de clases manejadas por JPA -->
+
+        <class>mx.edu.uaz.ingsoft.omt.modelo.entidades.Nivel</class>
+        <class>mx.edu.uaz.ingsoft.omt.modelo.entidades.EstadoAprendizaje</class>
+        <class>mx.edu.uaz.ingsoft.omt.modelo.entidades.Usuario</class>
+        <class>mx.edu.uaz.ingsoft.omt.modelo.entidades.FlashCard</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:SEP.db" />
+            <!-- Para la base de datos SQLite no se requiere usuario y contrasenia -->
+            <!--
+            <property name="javax.persistence.jdbc.user" value="uaz" />
+            <property name="javax.persistence.jdbc.password" value="uaz" />
+            -->
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <!-- https://www.eclipse.org/eclipselink/documentation/2.5/jpa/extensions/p_target_database.htm -->
+            <property name="eclipselink.target-database" value="Auto" />
+        </properties>
+    </persistence-unit>
+</persistence>
